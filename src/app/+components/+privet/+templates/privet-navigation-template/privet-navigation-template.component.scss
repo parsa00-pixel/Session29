@@ -1,0 +1,39 @@
+
+
+.sidenav-container {
+  height: 100vh;
+  background: rgb(249, 251, 254); 
+}
+
+
+.sidenav {
+  background:rgba(183, 183, 183, 0.518);
+  backdrop-filter: blur(12px);
+  border-left: 1px solid rgba(0,0,0,0.06);
+  width: 250px;
+  padding-top: 1rem;
+}
+
+
+.sidenav mat-toolbar {
+  background:rgba(183, 183, 183, 0.518);
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: rgb(32, 32, 32);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+
+mat-nav-list a {
+  font-size: 0.95rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 10px;
+  margin: 0.3rem 0;
+  transition: all 0.25s ease;
+  color: rgb(50, 50, 50) !important;
+}
+
+
+mat-nav-list a:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}

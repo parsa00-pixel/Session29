@@ -1,0 +1,30 @@
+<mat-card class="login-card" appearance="outlined">
+    <mat-card-header>
+        <!-- <div mat-card-avatar class="login-header-image"></div> -->
+        <mat-card-title class="title">ورود</mat-card-title>
+        <!-- <mat-card-subtitle class="title">فروشگاه</mat-card-subtitle> -->
+    </mat-card-header>
+    <!-- <img mat-card-image src="/images/shop.png" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+            <mat-form-field appearance="fill">
+                <mat-label>نام کاربری</mat-label>
+                <div class="sel">
+                </div>
+                <input [(ngModel)]="userName" required matInput placeholder="نام کاربری">
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-hint>الزامیست</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>رمز عبور</mat-label>
+                <div class="sel">
+                <input [(ngModel)]="password" required matInput type="password" placeholder="رمز عبور">
+                </div>
+                <mat-icon matSuffix>password</mat-icon>
+                <mat-hint>الزامیست</mat-hint>
+            </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="check()" matButton class="log-b">ورود</button>
+        <button matButton class="for-b">فراموشی رمز؟</button>
+    </mat-card-actions>
+</mat-card>
