@@ -14,6 +14,21 @@ export class AgenciessService {
     { id: '6', address: 'بوشهر', number: '7843' }
   ]
   list() {
-   return this.ELEMENT_DATA
+    return this.ELEMENT_DATA
+  }
+  add(agencies: agenciesElemet) {
+    this.ELEMENT_DATA.push(agencies);
+  }
+  edit(id: string, member: agenciesElemet) {
+    const index = this.ELEMENT_DATA.findIndex(m => m.id == id);
+    if (index != -1) {
+      this.ELEMENT_DATA[index] = member;
+    }
+  }
+  remove(id: string) {
+    const index = this.ELEMENT_DATA.findIndex(m => m.id == id);
+    if (index != -1) {
+      this.ELEMENT_DATA.splice(index, 1);
+    }
   }
 }

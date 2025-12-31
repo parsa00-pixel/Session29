@@ -1,16 +1,19 @@
 <h2 mat-dialog-title>مشخصات عضو</h2>
 <mat-dialog-content>
+    @if (data.action=='remove') {
+        <div class="delete">ایا از حذف اطلاعات اطمینان دارید؟</div>
+    }
     <mat-form-field appearance="outline">
         <mat-label>نام عضو</mat-label>
-        <input matInput placeholder="مثال: علی رضایی">
+        <input matInput [disabled]="data.action=='remove'" [(ngModel)]="member.fullName" placeholder="مثال: علی رضایی">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>ادرس</mat-label>
-        <input matInput placeholder="مثال: همدان...">
+        <input matInput [disabled]="data.action=='remove'" [(ngModel)]="member.address" placeholder="مثال: همدان...">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>شماره</mat-label>
-        <input matInput placeholder="مثال: 0918xxxxxxx">
+        <input matInput [disabled]="data.action=='remove'" [(ngModel)]="member.number" placeholder="مثال: 0918xxxxxxx">
     </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>

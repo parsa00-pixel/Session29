@@ -1,5 +1,5 @@
 <section>
-  <button matButton="filled">افزودن</button>
+  <button matButton="filled" (click)="openDialog()">افزودن</button>
 </section>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -29,7 +29,10 @@
   
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let element"><button matButton="text">ویرایش</button> <button matButton="tonal">حذف</button></td>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="editDialog(element)" matButton="text">ویرایش</button> 
+      <button (click)="removeDialog(element)" matButton="tonal">حذف</button>
+    </td>
   </ng-container>
 </table>
 

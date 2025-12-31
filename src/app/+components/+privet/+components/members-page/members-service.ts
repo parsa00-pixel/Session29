@@ -17,10 +17,22 @@ export class MembersService {
     { id: '9', fullName: 'زهرا احمدی', address: 'تهران', number: '0912' },
     { id: '10', fullName: 'پارسا احمدزاده', address: 'همدان', number: '0905' },
   ];
- list(){
-  return [...this.ELEMENT_DATA];
- }
- add(member:memebersElement){
-   this.ELEMENT_DATA.push(member); 
- }
+  list() {
+    return [...this.ELEMENT_DATA];
+  }
+  add(member: memebersElement) {
+    this.ELEMENT_DATA.push(member);
+  }
+  edit(id: string, member: memebersElement) {
+    const index = this.ELEMENT_DATA.findIndex(m => m.id == id);
+    if (index != -1) {
+      this.ELEMENT_DATA[index] = member;
+    }
+  }
+  remove(id: string) {
+    const index = this.ELEMENT_DATA.findIndex(m => m.id == id);
+    if (index != -1) {
+      this.ELEMENT_DATA.splice(index,1);
+    }
+  }
 }
