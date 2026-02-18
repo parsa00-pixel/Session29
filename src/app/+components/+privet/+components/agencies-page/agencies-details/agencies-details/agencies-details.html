@@ -3,26 +3,23 @@
     <mat-form-field appearance="fill">
         <mat-label>کد نمایندگی</mat-label>
         <div class="sel">
-            <input matInput [(ngModel)]="agencies.id" placeholder="مثال: 4569">
+            <input matInput [disabled]="data.action=='remove'" [(ngModel)]="agencies.id" placeholder="مثال: 4569">
         </div>
-        <mat-icon matSuffix></mat-icon>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>ادرس</mat-label>
         <div class="sel">
-            <input matInput [(ngModel)]="agencies.address" placeholder="مثال: همدان...">
+            <input matInput [disabled]="data.action=='remove'" [(ngModel)]="agencies.address" placeholder="مثال: همدان...">
         </div>
-        <mat-icon matSuffix></mat-icon>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>شماره</mat-label>
         <div class="sel">
-            <input matInput [(ngModel)]="agencies.number" placeholder="مثال: 081xxxxxxx">
+            <input matInput [disabled]="data.action=='remove'" [(ngModel)]="agencies.number" placeholder="مثال: 081xxxxxxx">
         </div>
-        <mat-icon matSuffix></mat-icon>
     </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button matButton [mat-dialog-close]="agencies" cdkFocusInitial>تایید</button>
+    <button matButton [mat-dialog-close]='agencies' cdkFocusInitial>تایید</button>
     <button matButton (click)="onNoClick()">انصراف</button>
 </mat-dialog-actions>

@@ -5,11 +5,11 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>امکانات</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="products">محصولات</a>
-      <a mat-list-item routerLink="members">اعضا</a>
-      <a mat-list-item routerLink="sells">لیست فروش ها</a>
-      <a mat-list-item routerLink="agencies">نمایندگی ها</a>
-      <a mat-list-item (click)="exit()">خروج</a>
+      <a mat-list-item routerLink="products"> <mat-icon fontSet="material-icons-outlined">inventory_2</mat-icon> محصولات</a>
+      <a mat-list-item routerLink="members"> <mat-icon fontSet="material-icons-outlined">group</mat-icon>  اعضا</a>
+      <a mat-list-item routerLink="sells"> <mat-icon fontSet="material-icons-outlined">receipt_long</mat-icon>  لیست فروش ها</a>
+      <a mat-list-item routerLink="agencies"> <mat-icon fontSet="material-icons-outlined">business</mat-icon>  نمایندگی ها</a>
+      <a mat-list-item (click)="exit()"> <mat-icon fontSet="material-icons-outlined">logout</mat-icon>  خروج</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

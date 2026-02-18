@@ -1,5 +1,6 @@
+@if (!busy) {
 <section>
-  <button matButton="filled" (click)="openDialog()">افزودن</button>
+  <button (click)="openDialog()" matButton="filled"><mat-icon>add</mat-icon>افزودن</button>
 </section>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -35,4 +36,7 @@
     </td>
   </ng-container>
 </table>
-
+}
+@else {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}

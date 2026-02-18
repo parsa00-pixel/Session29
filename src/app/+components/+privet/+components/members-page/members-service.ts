@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, signal } from '@angular/core';
 import { memebersElement } from './members-element.mobel';
+import { delay, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MembersService {
-  private readonly ELEMENT_DATA: memebersElement[] = [
+  private readonly ELEMENT_DATA = signal<memebersElement[]>([
     { id: '1', fullName: 'علی رضایی', address: 'همدان', number: '0918' },
     { id: '2', fullName: 'سعید احمدی', address: 'تهران', number: '0919' },
     { id: '3', fullName: 'رضا صمدی', address: 'سمنان', number: '0905' },
@@ -16,23 +17,24 @@ export class MembersService {
     { id: '8', fullName: 'سهیل جعفری', address: 'بوشهر', number: '0918' },
     { id: '9', fullName: 'زهرا احمدی', address: 'تهران', number: '0912' },
     { id: '10', fullName: 'پارسا احمدزاده', address: 'همدان', number: '0905' },
-  ];
+  ]);
+  // members = signal<memebersElement[]>(this.ELEMENT_DATA);
   list() {
-    return [...this.ELEMENT_DATA];
+    return of([...this.ELEMENT_DATA()]).pipe(delay(2400));
   }
   add(member: memebersElement) {
-    this.ELEMENT_DATA.push(member);
+    this.ELEMENT_DATA.update(list => [...list, member]);
   }
+
   edit(id: string, member: memebersElement) {
-    const index = this.ELEMENT_DATA.findIndex(m => m.id == id);
-    if (index != -1) {
-      this.ELEMENT_DATA[index] = member;
-    }
+    this.ELEMENT_DATA.update(list =>
+      list.map(m => m.id === id ? member : m)
+    );
   }
+
   remove(id: string) {
-    const index = this.ELEMENT_DATA.findIndex(m => m.id == id);
-    if (index != -1) {
-      this.ELEMENT_DATA.splice(index,1);
-    }
+    this.ELEMENT_DATA.update(list =>
+      list.filter(m => m.id !== id)
+    );
   }
 }

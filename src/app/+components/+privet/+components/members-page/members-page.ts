@@ -1,11 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { memebersElement } from './members-element.mobel';
 import { MembersService } from './members-service';
 import { MatDialog } from '@angular/material/dialog';
 import { MemberDetails } from './member-details/member-details';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatIcon } from "@angular/material/icon";
 
 
 /**
@@ -15,16 +16,30 @@ import { MemberDetails } from './member-details/member-details';
   selector: 'table-basic-example',
   styleUrl: 'members-page.scss',
   templateUrl: 'members-page.html',
-  imports: [MatTableModule, MatButtonModule],
+  imports: [MatTableModule, MatButtonModule, MatProgressBarModule, MatIcon],
 })
-export class MembersPage {
+export class MembersPage implements OnInit {
+  ngOnInit(): void {
+    this.refreshData()
+  }
   memebersService = inject(MembersService);
   readonly dialog = inject(MatDialog);
   displayedColumns: string[] = ['id', 'fullName', 'address', 'number', 'action'];
-  dataSource = this.memebersService.list();
+  dataSource:memebersElement[] = [];
+  busy=false;
 
   refreshData(){
-    this.dataSource=this.memebersService.list();
+    this.busy=true;
+    this.memebersService.list().subscribe({
+      next:(result)=>{
+        this.busy=false;
+        this.dataSource=result;
+      },
+      error:()=>{
+        this.busy=false;
+        window.alert("خطا در بارگذاری");
+      }
+    });
   }
 
   addDialog(): void {

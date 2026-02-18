@@ -22,20 +22,8 @@ import { MatInputModule } from '@angular/material/input';
   templateUrl: './agencies-details.html',
   styleUrl: './agencies-details.scss',
 })
-export class AgenciesDetails implements OnInit{
-  
-  ngOnInit(): void {
-    if (this.data.action=='edit') {
-      this.agencies.id=this.data.data.id;
-      this.agencies.number=this.data.data.number;
-      this.agencies.address=this.data.data.address;
-    }
-    else if (this.data.action=='remove') {
-      this.agencies.number=this.data.data.number;
-      this.agencies.address=this.data.data.address;
-      this.agencies.id=this.data.data.id;
-    }
-  }
+export class AgenciesDetails implements OnInit {
+
   readonly dialogRef = inject(MatDialogRef<AgenciesDetails>);
   readonly data = inject<DialogData>(MAT_DIALOG_DATA);
   onNoClick(): void {
@@ -45,6 +33,18 @@ export class AgenciesDetails implements OnInit{
     id: '',
     address: '',
     number: ''
+  }
+  ngOnInit(): void {
+    if (this.data.action == 'edit') {
+      this.agencies.number = this.data.data.number;
+      this.agencies.address = this.data.data.address;
+      this.agencies.id = this.data.data.id;
+    }
+    else if (this.data.action == 'remove') {
+      this.agencies.number = this.data.data.number;
+      this.agencies.address = this.data.data.address;
+      this.agencies.id = this.data.data.id;
+    }
   }
 }
 
